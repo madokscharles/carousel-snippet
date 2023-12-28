@@ -1,15 +1,28 @@
-const slides = document.querySelectorAll('.slide');
-let index = 0;
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+const images = document.querySelectorAll('.carousel img');
 
-function showSlide() {
-  slides.forEach(slide => {
-    slide.style.transform = `translateX(-${index * 100}%)`;
-  });
+let currentImageIndex = 0;
+
+function showImage(index) {
+    images.forEach((image, idx) => {
+        if (idx === index) {
+            image.classList.add('active');
+        } else {
+            image.classList.remove('active');
+        }
+    });
 }
 
-function nextSlide() {
-  index = (index + 1) % slides.length;
-  showSlide();
-}
+prevButton.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showImage(currentImageIndex);
+});
 
-setInterval(nextSlide, 3000);
+nextButton.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+});
+
+// Show the first image initially
+showImage(currentImageIndex);
