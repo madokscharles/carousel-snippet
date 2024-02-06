@@ -3,44 +3,95 @@ body, html {
     padding: 0;
 }
 
-.carousel {
-    position: relative;
-    width: 500px;
-    height: 300px;
-    overflow: hidden; /* Added overflow to hide overflowing images */
-    margin: 0 auto; /* Center the carousel */
-    text-align: center;
+.services-background {
+    background-image: url("https://i.imgur.com/kS9Chx1.png");
+    padding: 20px;
+  }
+.services-title {
+  align-items: center;
+  justify-content: center;
+  color: #27223E;
 }
-
-.carousel img {
-    position: absolute;
-    top: 0;
-    left: 0;
+.services-title h2 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 25px;
+}
+.services-title p {
+  text-align: center;
+  font-weight: 100;
+  font-size: 16px;
+}
+.carousel-container {
+  display: flex;
+  width: 50%;
+  margin: auto;
+  position: relative;
+}
+.carousel-slide {
+  flex: 0 0 50%;
+  padding: 10px; 
+  margin: 5px;
+  box-sizing: border-box;
+  border: 1px solid #2e3458;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.carousel-slide h2 {
+  text-align: center;
+  font-weight: 200;
+  font-size: 18px;
+}
+@media screen and (max-width: 768px) {
+  .carousel-container {
     width: 100%;
-    height: 100%;
-    opacity: 0; /* Hide all images initially */
-    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+  }
+  .carousel-slide img {
+    height: 200px;
+  }
+  .carousel-slide h2 {
+    font-size: 15px;
+  }
 }
-
-.carousel img.active {
-    opacity: 1; /* Show the active image */
+.carousel-slide a {
+  text-decoration: none;
+  color: #2e3458;
 }
-
-.carousel button {
+.carousel-slide a:hover {
+  color: #95c7de;
+}
+.prev, .next {
+    cursor: pointer;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
+    width: auto;
+    padding: 10px;
     color: white;
-    font-size: 32px;
-    cursor: pointer;
-}
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    background-color: #2e3458;
+    z-index: 1;
+  }
+  .next {
+    right: -10px;
+    border-radius: 3px 0 0 3px;
+  }
 
-.carousel .prev {
-    left: 20px;
-}
+  .prev {
+    left: 10px;
+    border-radius: 3px 0 0 3px;
+  }
 
-.carousel .next {
-    right: 20px;
-}
+  .prev:hover, .next:hover {
+    color: #2e3458;
+    background-color: white;
+  }

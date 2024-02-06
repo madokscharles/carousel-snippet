@@ -1,28 +1,27 @@
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-const images = document.querySelectorAll('.carousel img');
-
-let currentImageIndex = 0;
-
-function showImage(index) {
-    images.forEach((image, idx) => {
-        if (idx === index) {
-            image.classList.add('active');
-        } else {
-            image.classList.remove('active');
+let slideIndex = 1;
+      showSlides(slideIndex);
+  
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+  
+      function showSlides(n) {
+        const slides = document.getElementsByClassName("carousel-slide");
+        if (n > slides.length) {
+          slideIndex = 1;
         }
-    });
-}
-
-prevButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    showImage(currentImageIndex);
-});
-
-nextButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    showImage(currentImageIndex);
-});
-
-// Show the first image initially
-showImage(currentImageIndex);
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+  
+        slides[slideIndex - 1].style.display = "block";
+        slides[slideIndex].style.display = "block";
+      }
+  
+      function autoSlides() {
+        plusSlides(2);
+      }
+      setInterval(autoSlides, 5000);
